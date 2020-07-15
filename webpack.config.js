@@ -36,9 +36,24 @@ const config = {
             ),
           // the plugin will generate an image for each size
           // included in the size array
-          size: [72, 96, 128, 144, 152, 192, 384, 512]
+          size: [72, 96, 128, 144, 152, 192, 384, 512], 
+          destination: path.join("assets", "icons")
         }
-      ]
+      ], 
+      module: {
+        rules: [
+          {
+            test: /\.m?js$/,
+            exclude: /(node_modules)/,
+            use: {
+              loader: "babel-loader",
+              options: {
+                presets: ["@babel/preset-env"]
+              }
+            }
+          }
+        ]
+      }
     })
   ]
 };
